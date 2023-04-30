@@ -1,0 +1,29 @@
+<app-header></app-header>
+<form action="" #regForm="ngForm" (ngSubmit)="submitForm(regForm.value)" novalidate>
+  <div class="input-container">
+    <label for="id">ID</label>
+    <input type="text" id="id" #id="ngModel" ngModel name="id" minlength="1" maxlength="3" required/>
+  </div>
+  <div class="input-error">
+    <p class="text-danger" *ngIf="id.errors?.['required'] && id.touched">
+      ID cannot be empty
+    </p>
+    <p class="text-danger" *ngIf="id.errors?.['minlength'] && id.touched">
+      ID must be minimum 1 digit or 3 digit max
+    </p>
+  </div>
+
+  <div class="input-container">
+    <label for="name">Name</label>
+    <input type="text" id="name" #name="ngModel" ngModel name="name" minlength="1" maxlength="8" required/>
+  </div>
+  <div class="input-error">
+    <p class="text-danger" *ngIf="name.errors?.['required'] && name.touched">
+      Name cannot be empty
+    </p>
+    <p class="text-danger" *ngIf="name.errors?.['minlength'] && name.touched">
+      Name must be minimum 1 character or 8 characters max
+    </p>
+  </div>
+  <input [disabled]="!regForm.valid" type="submit" value="Login" class="btn btn-dark"/>
+</form>

@@ -1,0 +1,34 @@
+h2,
+table {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: darkblue;
+}
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  text-align: left;
+  border-collapse: collapse;
+  border: 1px solid #999;
+}
+
+tr,
+td,
+th {
+  border: 1px solid #999;
+}
+
+td,
+th {
+  padding: 5px 8px;
+}
+
+thead {
+  background-color: teal;
+  color: aliceblue;
+}

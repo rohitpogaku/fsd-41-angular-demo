@@ -1,0 +1,101 @@
+<app-header></app-header>
+<h2 class="mt-4">Employee Data</h2>
+<table class="center">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+    <th>Email</th>
+    <th>DeptID</th>
+    <th>Delete</th>
+    <th>Update</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let e of employees">
+  <tr>
+    <td>{{ e.id }}</td>
+    <td>{{ e.firstName }}</td>
+    <td>{{ e.lastName }}</td>
+    <td>{{ e.email }}</td>
+    <td>{{ e.deptID }}</td>
+    <td>
+      <button (click)="deleteEmployee(e.id)" type="button" class="btn btn-outline-danger">Delete</button>
+    </td>
+    <td>
+      <button (click)="editEmployee(e)" type="button" class="btn btn-outline-success">Edit</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+<!--<h2 class="mt-4">Department Data</h2>-->
+<!--<table>-->
+<!--  <thead>-->
+<!--  <tr>-->
+<!--    <th>ID</th>-->
+<!--    <th>Department</th>-->
+<!--  </tr>-->
+<!--  </thead>-->
+<!--  <tbody *ngFor="let d of departments">-->
+<!--  <tr>-->
+<!--    <td>{{ d.id }}</td>-->
+<!--    <td>{{ d.name }}</td>-->
+<!--  </tr>-->
+<!--  </tbody>-->
+<!--</table>-->
+<div class="text-center">
+  <a routerLink="/addemployee" class="btn btn-primary">Add an Employee</a>
+</div>
+
+
+<form *ngIf="employee" action="" #addEmp="ngForm" (ngSubmit)="updateEmployee()" novalidate>
+  <div class="input-container">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" [(ngModel)]="employee.firstName" name="firstName" required/>
+  </div>
+  <!--  <div class="input-error">-->
+  <!--    <p class="text-danger" *ngIf="firstName.errors?.['required'] && firstName.touched">-->
+  <!--      FirstName cannot be empty-->
+  <!--    </p>-->
+  <!--  </div>-->
+
+  <div class="input-container">
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" [(ngModel)]="employee.lastName" name="lastName" required/>
+  </div>
+  <!--  <div class="input-error">-->
+  <!--    <p class="text-danger" *ngIf="lastName.errors?.['required'] && lastName.touched">-->
+  <!--      LastName cannot be empty-->
+  <!--    </p>-->
+  <!--  </div>-->
+
+  <div class="input-container">
+    <label for="email">Email</label>
+    <input type="email" id="email" [(ngModel)]="employee.email" name="email" required/>
+  </div>
+  <!--  <div class="input-error">-->
+  <!--    <p class="text-danger" *ngIf="email.errors?.['required'] && email.touched">-->
+  <!--      Email cannot be empty-->
+  <!--    </p>-->
+  <!--  </div>-->
+
+  <div class="input-container">
+    <label for="did">Department ID</label>
+    <input type="number" id="did" [(ngModel)]="employee.deptID" name="deptID" min="1" max="3"
+           required/>
+  </div>
+  <!--  <div class="input-error">-->
+  <!--    <p class="text-danger" *ngIf="deptID.errors?.['required'] && deptID.touched">-->
+  <!--      DeptID cannot be empty-->
+  <!--    </p>-->
+  <!--    <p class="text-danger" *ngIf="deptID.errors?.['min'] && deptID.errors?.['max'] && deptID.touched">-->
+  <!--      DeptID must be minimum 1 or 3 max-->
+  <!--    </p>-->
+  <!--  </div>-->
+  <input [disabled]="!addEmp.valid" type="submit" value="Update" class="btn btn-dark"/>
+</form>
+
+
+
+

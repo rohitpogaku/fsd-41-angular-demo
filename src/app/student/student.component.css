@@ -1,0 +1,59 @@
+h2,
+table {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h2 {
+  text-align: center;
+  text-transform: uppercase;
+  color: darkblue;
+}
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  text-align: left;
+  border-collapse: collapse;
+  border: 1px solid #999;
+}
+
+tr,
+td,
+th {
+  border: 1px solid #999;
+}
+
+td,
+th {
+  padding: 5px 8px;
+}
+
+thead {
+  background-color: teal;
+  color: aliceblue;
+}
+
+form {
+  width: 40%;
+  margin: 20px auto;
+  padding: 8px 12px;
+  border: 1px solid slategray;
+  border-radius: 10px;
+}
+
+.input-container {
+  width: 80%;
+  margin: 5px auto;
+  display: flex;
+}
+
+
+input {
+  width: 80%;
+  padding: 4px 8px;
+  color: darkcyan;
+}
+
+label {
+  width: 20%;
+}

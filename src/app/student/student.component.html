@@ -1,0 +1,68 @@
+<app-header></app-header>
+<h2 class="mt-4">Student Data</h2>
+<table class="center">
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Date of Birth</th>
+    <th>Age</th>
+    <th>Gender</th>
+    <th>Marks</th>
+    <th>Email</th>
+    <th>Country</th>
+    <th>Phone</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let s of student">
+  <tr>
+    <td>{{ s.id }}</td>
+    <td>{{ s.name | salutation : s.gender | uppercase }}</td>
+    <td>{{ s.dob | date }}</td>
+    <td>{{ s.dob | computeage }}</td>
+    <td>{{ s.gender }}</td>
+    <td>{{ s.marks }}</td>
+    <td>{{ s.email | lowercase }}</td>
+    <td>{{ s.country | uppercase }}</td>
+    <td>{{ s.phone | countrycode : s.country }}</td>
+  </tr>
+  </tbody>
+</table>
+<form action="">
+  <div class="input-container">
+    <label for="id">ID</label>
+    <input type="text" id="id" name="id" [(ngModel)]="formInput.id">
+  </div>
+  <div class="input-container">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" [(ngModel)]="formInput.name">
+  </div>
+  <div class="input-container">
+    <label for="dob">DoB</label>
+    <input type="date" id="dob" name="dob" [(ngModel)]="formInput.dob">
+  </div>
+  <!--  <div class="input-container">-->
+  <!--    <label for="age">Age</label>-->
+  <!--    <input type="text" id="age" name="age" [(ngModel)]="formInput.age">-->
+  <!--  </div>-->
+  <div class="input-container">
+    <label for="gender">Gender</label>
+    <input type="text" id="gender" name="gender" [(ngModel)]="formInput.gender">
+  </div>
+  <div class="input-container">
+    <label for="marks">Marks</label>
+    <input type="text" id="marks" name="marks" [(ngModel)]="formInput.marks">
+  </div>
+  <div class="input-container">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email" [(ngModel)]="formInput.email">
+  </div>
+  <div class="input-container">
+    <label for="country">Country</label>
+    <input type="text" id="country" name="country" [(ngModel)]="formInput.country">
+  </div>
+  <div class="input-container">
+    <label for="phone">Phone</label>
+    <input type="number" id="phone" name="phone" [(ngModel)]="formInput.phone">
+  </div>
+</form>

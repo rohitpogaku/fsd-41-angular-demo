@@ -1,0 +1,197 @@
+<app-header></app-header>
+<form
+  action=""
+  #regForm="ngForm"
+  (ngSubmit)="submitForm(regForm.value)"
+  novalidate
+>
+  <div class="input-container">
+    <label for="id">ID</label>
+    <input
+      type="text"
+      id="id"
+      #id="ngModel"
+      ngModel
+      name="id"
+      minlength="1"
+      maxlength="3"
+      required
+    />
+  </div>
+  <div class="input-error">
+    <p class="text-danger" *ngIf="id.errors?.['required'] && id.touched">
+      ID cannot be empty
+    </p>
+    <p class="text-danger" *ngIf="id.errors?.['minlength'] && id.touched">
+      ID must be minimum 1 digit or 3 digit max
+    </p>
+  </div>
+
+  <div class="input-container">
+    <label for="name">Name</label>
+    <input type="text" id="name" #name="ngModel" ngModel name="name" minlength="1" maxlength="8" required/>
+  </div>
+  <div class="input-error">
+    <p class="text-danger" *ngIf="name.errors?.['required'] && name.touched">
+      Name cannot be empty
+    </p>
+    <p class="text-danger" *ngIf="name.errors?.['minlength'] && name.touched">
+      Name must be minimum 1 character or 8 characters max
+    </p>
+  </div>
+
+  <div class="input-container">
+    <label for="dob">DoB</label>
+    <input type="date" id="dob" #dob="ngModel" ngModel name="dob" required/>
+  </div>
+  <div class="input-error">
+    <p class="text-danger" *ngIf="dob.errors?.['required'] && dob.touched">
+      DoB cannot be empty
+    </p>
+  </div>
+
+  <div class="input-container">
+    <label for="age">Age</label>
+    <input
+      type="number"
+      id="age"
+      #age="ngModel"
+      ngModel
+      name="age"
+      min="18"
+      max="120"
+      required
+    />
+  </div>
+  <div class="input-error">
+    <p class="text-danger" *ngIf="age.errors?.['required'] && age.touched">
+      Age cannot be empty
+    </p>
+    <p class="text-danger" *ngIf="(age.errors?.['min'] || age.errors?.['max']) && age.touched">
+      Age must be between 18 and 120
+    </p>
+  </div>
+
+  <div class="input-container">
+    <label for="gender">Gender</label>
+    <div id="gender" class="d-flex gap-2">
+      <input
+        type="radio"
+        #gender="ngModel"
+        ngModel
+        name="gender"
+        value="male"
+      />
+      Male
+      <input
+        type="radio"
+        #gender="ngModel"
+        ngModel
+        name="gender"
+        value="female"
+      />
+      Female
+      <input
+        type="radio"
+        #gender="ngModel"
+        ngModel
+        name="gender"
+        value="other"
+      />
+      Other
+    </div>
+  </div>
+  <div class="input-error">
+    <p
+      class="text-danger"
+      *ngIf="gender.errors?.['required'] && gender.touched"
+    >
+      Gender cannot be empty
+    </p>
+  </div>
+
+  <div class="input-container">
+    <label for="marks">Marks</label>
+    <input
+      type="number"
+      id="marks"
+      #marks="ngModel"
+      ngModel
+      name="marks"
+      min="0"
+      max="100"
+      required
+    />
+  </div>
+  <div class="input-error">
+    <p class="text-danger" *ngIf="marks.errors?.['required'] && marks.touched">
+      Marks cannot be empty
+    </p>
+    <p
+      class="text-danger"
+      *ngIf="(marks.errors?.['min'] || marks.errors?.['max']) && marks.touched"
+    >
+      Marks must be between 0 and 100
+    </p>
+  </div>
+
+  <div class="input-container">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      #email="ngModel"
+      ngModel
+      name="email"
+      required
+    />
+  </div>
+  <div class="input-error">
+    <p class="text-danger" *ngIf="email.errors?.['required'] && email.touched">
+      Email cannot be empty
+    </p>
+  </div>
+
+  <div class="input-container">
+    <label for="country">Country</label>
+    <select name="country" #country="ngModel" ngModel id="country" required>
+      <option value="">--select country--</option>
+      <option *ngFor="let c of countries" name="country" value={{c.name}}>{{c.name}}</option>
+    </select>
+  </div>
+  <div class="input-error">
+    <p
+      class="text-danger"
+      *ngIf="country.errors?.['required'] && country.touched"
+    >
+      Country cannot be empty
+    </p>
+  </div>
+
+  <div class="input-container">
+    <label for="phone">Phone</label>
+    <input
+      type="text"
+      id="phone"
+      #phone="ngModel"
+      ngModel
+      name="phone"
+      minlength="10"
+      maxlength="10"
+      required
+    />
+  </div>
+  <div class="input-error">
+    <p class="text-danger" *ngIf="phone.errors?.['required'] && phone.touched">
+      Phone number cannot be empty
+    </p>
+    <p
+      class="text-danger"
+      *ngIf="(phone.errors?.['minlength'] || phone.errors?.['maxlength']) && phone.touched"
+    >
+      Phone number must be of length 10
+    </p>
+  </div>
+
+  <input [disabled]="!regForm.valid" type="submit" value="Submit" class="btn btn-dark"/>
+</form>
